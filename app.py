@@ -173,4 +173,4 @@ def HSV_to_RGB_aux(n):
     return v - v*s*max(0 , min(k, 4 - k, 1)) 
 
 if __name__ == '__main__':
-    app.run(debug= True)
+    app.run(host='0.0.0.0')
