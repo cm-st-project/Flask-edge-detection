@@ -1,3 +1,39 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width">-->
+<!--    <title>Edge Detection</title>-->
+<!--    <link href="../static/style3.css" rel="stylesheet" type="text/css"/>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div class="header">-->
+<!--    <a class="active" href="/">Edge Detection</a>-->
+<!--    <a class="ac" href="/about">About</a>-->
+<!--    <a class="ac" href="/convert">Convert</a>-->
+<!--    <br><br>-->
+<!--</div>-->
+
+<!--<h1>Edge Detection Filter</h1>-->
+<!--<form method="POST">-->
+<!--    <button type="submit" name="threshhold" value="rb" class="button">Rainbow Mode</button>-->
+<!--    <button type="submit" name="threshhold" value="decrease" class="button">-</button>-->
+<!--    <button type="submit" name="threshhold" value="increase" class="button">+</button>-->
+<!--    <br>-->
+<!--</form>-->
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-lg-8  offset-lg-2">-->
+<!--            <img src="{{ url_for('video_feed')}}" width="100%" alt="no camera access">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+
 <!DOCTYPE html>
 <html>
 
@@ -10,31 +46,50 @@
 
 <body>
 
-    <div class="header">
-        <a class="active" href="/">Edge Detection</a>
-        <a class="ac" href="/about">About</a>
-        <a class="ac" href="/convert">Convert</a>
-        <br><br>
-        </div>
-    
-    <h1>Edge Detection Filter</h1>
-    <form method="POST">
-        <button type="submit" name="threshhold" value="rb"class="button">Rainbow Mode</button>
-        <button type="submit" name="threshhold" value="decrease"class="button" >-</button>
-        <button type="submit" name="threshhold" value="increase"class="button">+</button>
-        <br>
-    </form>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8  offset-lg-2">
-                    <img src="{{ url_for('video_feed')}}" width="100%" alt="no camera access" >
-                </div>
-            </div>
-        </div>
-   
+  <div class="header">
+    <a class="active" href="/">Edge Detection</a>
+    <a class="ac" href="/about">About</a>
+    <a class="ac" href="/convert">Convert</a>
+    <br><br>
+  </div>
+
+  <h1>Edge Detection Filter</h1>
+  <form method="POST">
+    <button type="submit" name="threshhold" value="rb" class="button">Rainbow Mode</button>
+    <button type="submit" name="threshhold" value="decrease" class="button">-</button>
+    <button type="submit" name="threshhold" value="increase" class="button">+</button>
+    <br>
+  </form>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <video id="live-video" width="100%" autoplay playsinline></video>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code to access the user's camera and display the live feed
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('live-video');
+
+      // Use navigator.mediaDevices.getUserMedia to access the camera
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then((stream) => {
+          // Set the video source to the stream from the camera
+          video.srcObject = stream;
+        })
+        .catch((error) => {
+          console.error('Error accessing camera:', error);
+        });
+    });
+  </script>
+
 </body>
 
-
-
 </html>
+
+
+
+<!--</html>-->
 
