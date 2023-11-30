@@ -5,7 +5,7 @@ import numpy as np
 import acapture
 
 app = Flask(__name__)
-camera = cv2.VideoCapture(-1)
+camera = cv2.VideoCapture(0)
 # camera = acapture.open(0)
 threshold_value = 100
 rainbow_mode = False
@@ -172,5 +172,5 @@ def HSV_to_RGB_aux(n):
     k = (n + hue / 60) % 6
     return v - v*s*max(0 , min(k, 4 - k, 1)) 
 
-if __name__ == '___main__':
+if __name__ == '__main__':
     app.run(debug= True)
